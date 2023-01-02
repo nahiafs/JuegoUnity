@@ -25,6 +25,7 @@ public class Movimiento : MonoBehaviour
     bool tocaPiso;
 
     private Animator anim;
+    public AudioSource pasos;
 
     private void Start()
     {
@@ -86,6 +87,16 @@ public class Movimiento : MonoBehaviour
                 controller.Move(mover.normalized * velocidad * Time.deltaTime);
                 anim.SetFloat("Blend", 0.5f, 0.1f, Time.deltaTime);
             }
+        }
+        
+        if (Input.GetButtonDown("Horizontal") || Input.GetButtonDown("Vertical"))
+        {
+            pasos.Play();
+        }
+        
+        if (Input.GetButtonUp("Horizontal") || Input.GetButtonUp("Vertical"))
+        {
+            pasos.Pause();
         }
     }
 }
