@@ -17,6 +17,8 @@ public class Prueba2 : MonoBehaviour
     
     private float[] zonas = {-14, -12, -10, -8, -6, -4, -2, 0, 2};
 
+    private bool comenzado = false;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -27,15 +29,31 @@ public class Prueba2 : MonoBehaviour
         obstaculo5 = Resources.Load("Laser5", typeof(GameObject)) as GameObject;
         
         puerta = GameObject.Find("Puerta");
-
-        for (int i = 1; i <= 10; i++)
-        {
-            Invoke("generarObstaculos", i * 1.5f);
-        }
-        
-        Invoke("aparecePuerta", 16f);
     }
-    
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            juego();
+        }
+    }
+
+    public void juego()
+    {
+        if (! comenzado)
+        {
+            comenzado = true;
+            
+            for (int i = 1; i <= 10; i++)
+            {
+                Invoke("generarObstaculos", i * 1.5f);
+            }
+        
+            Invoke("aparecePuerta", 16f);
+        }
+    }
+
     public void generarObstaculos()
     {
         int random = Random.Range(1, 5);

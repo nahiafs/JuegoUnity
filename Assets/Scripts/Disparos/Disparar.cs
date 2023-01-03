@@ -7,6 +7,8 @@ public class Disparar : MonoBehaviour
     public Arma arma;
     private GameObject camara;
 
+    private bool empieza = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,9 +20,17 @@ public class Disparar : MonoBehaviour
     {
         arma.apareceMira(camara.transform);
         
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            arma.disparar();
+            empieza = true;
+        }
+
+        if (empieza)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                arma.disparar();
+            }
         }
     }
 }

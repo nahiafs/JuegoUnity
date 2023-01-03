@@ -9,6 +9,7 @@ TagManager:
   - Espada
   - Bala
   - Muro
+  - Interfaz
   layers:
   - Default
   - TransparentFX
