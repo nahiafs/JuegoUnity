@@ -13,8 +13,11 @@ public class CambioEscena : MonoBehaviour
         String escenaActual = SceneManager.GetActiveScene().name;
         int num = Int32.Parse(escenaActual.Substring(6)) + 1;
         escena = "Prueba" + num;
-        
-        
+
+        if (escenaActual == "Prueba6")
+        {
+            escena = "Final";
+        }
     }
 
     private void OnTriggerEnter(Collider other)
